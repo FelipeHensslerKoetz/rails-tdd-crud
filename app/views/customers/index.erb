@@ -1,0 +1,28 @@
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<h1>Listing Customers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Show</td>
+      <td>Edit</td>
+      <td>Delete</td>
+    </tr>
+  </thead>
+  <tbody>
+  <% @customers.each do |customer| %> 
+    <tr>
+      <td><%= customer.name %></td>
+      <td><%= link_to 'Show', customer_path(customer) %></td>
+      <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+      <td><%= link_to "Delete", customer, method: :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Customer', new_customer_path %>
